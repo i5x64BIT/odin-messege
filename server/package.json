@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && node app",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd ../client && npm run build",
+    "build": "npm install && cd ../client && npm install && npm run build",
     "dev": "nodemon app"
   },
   "author": "",
