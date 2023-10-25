@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node app",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd ../client && npm run build",
     "dev": "nodemon app"
@@ -11,10 +12,16 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "path": "^0.12.7"
+    "mongoose": "^7.6.3",
+    "path": "^0.12.7",
+    "unique-names-generator": "^4.7.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
-  }
+  },
+  "type": "module"
 }

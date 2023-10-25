@@ -2,68 +2,183 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  font-size: 14px;
+  color: black;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  background: linear-gradient(45deg , 	#0266c8,#00a8ff, #f195ac, 	#b28bc0);
+  --header-color: #a9825d;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+body{
   min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+#root{
+  min-width: inherit;
+  min-height: inherit;
+  padding: 1em;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Content animation*/
+.content-container{
+  background-color: white;
+  border-radius: 10px;
+  padding: 3em;
+  width: clamp(25em, 70vw, 40em);
+  border-top: inset 1.5em rgb(137, 135, 135);
+  position: relative;
+  margin: 2em auto;
+  animation: slide-in 500ms ease-out;
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 100;
+    transform: translate(0);
+  }
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+/* Window */
+.window-header{
+  top: -1.5em;
+  left: 10px;
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  min-width: 100%;
+  justify-items: center;
+}
+.window-title{
+  display: flex;
+}
+.title-icon{
+  min-width: 1em;
+  margin-right: .2em;
+  fill: var(--header-color);
+  transition: 1s ease-in-out;
+}
+.title-icon:hover{
+  transform: rotate(720deg);
+}
+.window-title a{
+  font-size: 1rem;
+  text-decoration: none;
+  min-width: max-content;
+  color: var(--header-color);
+  transition: 200ms;
+}
+.window-title a:hover{
+  filter: brightness(150%);
+}
+.window-controls> svg{
+  width: .7em;
+  padding-right: .3em;
+  transition: 80ms;
+}
+.window-controls > svg:hover{
+  filter: brightness(120%);
+}
+
+/* Search */
+.search-container{
+  max-width: 100%;
+}
+.messege_search{
+  padding: .5em;
+  padding-left: 1.2em;
+  display: block;
+  margin-inline: auto;
+  min-width: 75%;
+  max-width: 450px;
+  border-radius: 50px;
+  border: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+  margin-bottom: 2em;
+}
+
+/* Messege */
+.messege_item{
+  box-shadow: 0 3px 1px rgba(0, 0, 0, .1);
+  padding: .5em 1em;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+.messege_item + *{
+  margin-top: 1em;
+}
+.messege_header{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+.upvote-container{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  justify-content: flex-end;
+}
+.messege_upvote_controls{
+  display: flex;
+}
+.messege_upvote_controls > button{
+  border: 1px solid rgba(0, 0, 0, .2);
+  width: 1.5rem;
+  padding: 0;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+
+}
+
+/* New Messege*/
+.new-messege-container{
+  display: flex;
+  min-height: 8em;
+  --border-curve: 8px
+}
+.new-messege-field{
+  width: 100%;
+  resize: none;
+  border: 1px solid rgba(0, 0, 0, .2);
   font-family: inherit;
-  background-color: #1a1a1a;
+  padding: 1em;
+  border-radius: var(--border-curve) 0 0 var(--border-curve);
+}
+.btn-new-messege{
+  background-color: #00a8ff;
+  color: whitesmoke;
+  border: 0;
+  padding: .5em 1em;
+  font-size: 1.1rem;
+  transition: 80ms;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+.btn-new-messege.partial{
+  border-radius: 0 var(--border-curve) var(--border-curve) 0;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn-new-messege:hover{
+  filter: brightness(120%);
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn-new-messege[disabled]{
+  filter:brightness(80%);
+  color: black;
+  cursor:progress;
 }
